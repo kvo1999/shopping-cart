@@ -42,27 +42,28 @@ def to_usd(my_price):
 #print(products)
 
 #have user input item references
+while True:
 
-product_id = input("Please input a product identifier: ")
-#print(product_id)
+    product_id = input("Please input a product identifier: ")
+    #print(product_id)
+  
+   #end loop 
+    if product_id == "DONE":
+        break
+    #look up corresponding products
 
-#look up corresponding products
+    #print the product that has an id attribute equal to 9
+    matching_products = []
 
-#print the product that has an id attribute equal to 9
-matching_products = []
+    for x in products:
+        if str(x["id"]) == str(product_id):
+            #this is a match
+            matching_products.append(x)
 
-for x in products:
-    if str(x["id"]) == str(product_id):
-        #this is a match
-        matching_products.append(x)
-
-print(matching_products)
-print(len(matching_products))
-print(type(matching_products))
-
-#print the name of the matching product 
-matching_product = matching_products[0]
-print(matching_product["name"], matching_product["price"])
+    print(matching_products)
+    #print the name of the matching product 
+    matching_product = matching_products[0]
+    print(matching_product["name"], matching_product["price"])
 
 
 #return name of store
