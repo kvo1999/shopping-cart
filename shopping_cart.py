@@ -43,6 +43,7 @@ def to_usd(my_price):
 #got help from prof rossetti's video
 
 #print(products)
+
 total_price = 0
 selected_ids = []
 #have user input item references
@@ -54,6 +55,7 @@ while True:
         break
     else:
         selected_ids.append(selected_id)
+
         #matching_products = [p for p in products if str(p["id"]) == str(product_id)]
         #matching_product = matching_products[0]
         #total_price = total_price + matching_product["price"]
