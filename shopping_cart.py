@@ -43,18 +43,20 @@ def to_usd(my_price):
 
 #print(products)
 total_price = 0
+selected_ids = []
 #have user input item references
 while True:
-    product_id = input("Please input a product identifier: ")
+    selected_id = input("Please input a product identifier: ")
   
      #end loop
-    if product_id.upper() == "DONE":
+    if selected_id.upper() == "DONE":
         break
     else:
-        matching_products = [p for p in products if str(p["id"]) == str(product_id)]
-        matching_product = matching_products[0]
-        total_price = total_price + matching_product["price"]
-        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+        selected_ids.append(selected_id)
+        #matching_products = [p for p in products if str(p["id"]) == str(product_id)]
+        #matching_product = matching_products[0]
+        #total_price = total_price + matching_product["price"]
+        #print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 
 #return name of store
@@ -71,14 +73,22 @@ print("-------------------")
 
 #selected products
 print("SELECTED PRODUCTS")
-for q in matching_products:
-    print("..." + q["name"].upper() + "(" + to_usd(q["price"]) + ")")
+for selected_id in selected_ids:
+        matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+        matching_product = matching_products[0]
+        total_price = total_price + matching_product["price"]
+        print("... " + matching_product["name"].upper() + " (" + str(to_usd(matching_product["price"])) + ")")
+#for item in selected_ids:
+    #print("..." + item["name"].upper() + "(" + to_usd(item["price"]) + ")")
 
 print("-------------------")
 
 print("SUBTOTAL: " + str(to_usd(total_price))) #format as USD
-print("TAX:")
-print("TOTAL:")
+
+tax_rate = .0875
+tax = tax_rate * total_price
+print("TAX: " + to_usd(tax))
+print("TOTAL: " + to_usd(total_price + tax))
 print("-------------------")
 print("THANKS FOR SHOPPING WITH US, SEE YOU AGAIN SOON!")
 print("-------------------")
