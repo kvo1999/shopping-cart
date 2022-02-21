@@ -72,7 +72,7 @@ print("CHECKOUT AT:", now)
 print("-------------------")
 
 #selected products
-print("SELECTED PRODUCTS")
+print("SELECTED PRODUCTS:")
 for selected_id in selected_ids:
         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
         matching_product = matching_products[0]
