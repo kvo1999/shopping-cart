@@ -1,4 +1,5 @@
 # shopping_cart.py
+import os 
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -85,8 +86,13 @@ print("-------------------")
 
 print("SUBTOTAL: " + str(to_usd(total_price))) #format as USD
 
-tax_rate = .0875
-tax = tax_rate * total_price
+#tax rate challenge
+from dotenv import load_dotenv
+load_dotenv()
+TAX_RATE = os.getenv("TAX_RATE", default = 0.0875)
+
+tax = total_price * float(TAX_RATE)
+
 print("TAX: " + to_usd(tax))
 print("TOTAL: " + to_usd(total_price + tax))
 print("-------------------")
