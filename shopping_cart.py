@@ -37,25 +37,24 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 
-# TODO: write some Python code here to produce the desired output
+#TO DO: write some Python code here to produce the desired output
+
+#got help from prof rossetti's video
 
 #print(products)
-
+total_price = 0
 #have user input item references
 while True:
     product_id = input("Please input a product identifier: ")
   
-   #end loop
-    if product_id.capitalize() == "DONE":
+     #end loop
+    if product_id.upper() == "DONE":
         break
-    
-    #print the product that has an id attribute equal to input
-    matching_products = []
-
-    for x in products:
-        if str(x["id"]) == str(product_id):
-            #this is a match
-            matching_products.append(x)
+    else:
+        matching_products = [p for p in products if str(p["id"]) == str(product_id)]
+        matching_product = matching_products[0]
+        total_price = total_price + matching_product["price"]
+        print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 
 #return name of store
@@ -68,8 +67,18 @@ print("-------------------")
 from datetime import datetime 
 now = datetime.now()
 print("CHECKOUT AT:", now)
+print("-------------------")
 
-#print the name of the matching products
-for item in matching_products:
-    print(item["name"], item["price"])
+#selected products
+print("SELECTED PRODUCTS")
+for q in matching_products:
+    print("..." + q["name"].upper() + "(" + to_usd(q["price"]) + ")")
 
+print("-------------------")
+
+print("SUBTOTAL: " + str(to_usd(total_price))) #format as USD
+print("TAX:")
+print("TOTAL:")
+print("-------------------")
+print("THANKS FOR SHOPPING WITH US, SEE YOU AGAIN SOON!")
+print("-------------------")
