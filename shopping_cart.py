@@ -43,16 +43,13 @@ def to_usd(my_price):
 
 #have user input item references
 while True:
-
     product_id = input("Please input a product identifier: ")
-    #print(product_id)
   
-   #end loop 
-    if product_id == "DONE":
+   #end loop
+    if product_id.capitalize() == "DONE":
         break
-    #look up corresponding products
-
-    #print the product that has an id attribute equal to 9
+    
+    #print the product that has an id attribute equal to input
     matching_products = []
 
     for x in products:
@@ -60,12 +57,19 @@ while True:
             #this is a match
             matching_products.append(x)
 
-    print(matching_products)
-    #print the name of the matching product 
-    matching_product = matching_products[0]
-    print(matching_product["name"], matching_product["price"])
-
 
 #return name of store
+print("-------------------")
+print("Cool Cats Grocery Store")
+print("cool-cats-store.com")
+print("-------------------")
 
-#
+#get current date and time 
+from datetime import datetime 
+now = datetime.now()
+print("CHECKOUT AT:", now)
+
+#print the name of the matching products
+for item in matching_products:
+    print(item["name"], item["price"])
+
